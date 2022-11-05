@@ -8,9 +8,9 @@
     <form (ngSubmit)='onSubmit(Form)' #Form="ngForm">
       <div class="tab-panel">
         <tabset class="member-tabset" #formTabs>
-          <tab heading="Basic Info">
+          <tab heading="Basic Info" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
             <p>I want to</p>
-          <div class="btn-group" btnRadioGroup>
+          <div class="btn-group" btnRadioGroup ngModel name="SellRent" required>
             <label class="btn btn-outline-primary mx-2"
             btnRadio=1 role="button" name="SellRent">Sell</label>
             <label class="btn btn-outline-primary mx-2"
@@ -18,7 +18,7 @@
           </div>
             <div class="form-group col-12">
               <p>BHK</p>
-            <div class="btn-group" btnRadioGroup>
+            <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.BHK" name="BHK" required>
               <label
               *ngFor="let bhk of ['1','2','3','4']"
               class="btn btn-outline-primary mx-2"
@@ -30,7 +30,7 @@
 
             <div class="form-group col-12">
               <p>Property Type</p>
-              <div class="btn-group" btnRadioGroup name="propType" [(ngModel)]="propertyView.PType">
+              <div class="btn-group" btnRadioGroup name="propType" [(ngModel)]="propertyView.PType" required>
                 <label
                 *ngFor="let ptype of propertyTypes"
                 class="btn btn-outline-primary mx-2"
@@ -39,7 +39,7 @@
             </div>
 <div class="form-group col-12">
               <p>Furnish Type</p>
-              <div class="btn-group" btnRadioGroup>
+              <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.FType" name="FType" required>
                 <label
                 *ngFor="let ftype of furnishTypes"
                 class="btn btn-outline-primary mx-2"
@@ -63,13 +63,13 @@
 
               <div class="form-group col-12">
                 <label>City</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="propertyView.City" name="City" required>
               </div>
 
 
               <div class="form-group col-12">
                   <button type="button" class="btn mt-3 btn-primary col-12"
-                  (click)="selectTab(1)">Next</button>
+                  (click)="selectTab(1)" [disabled]="!BasicInfo.valid">Next</button>
               </div>
           </tab>
 
@@ -91,7 +91,7 @@
 
               <div class="form-group col-12">
                 <label>Built Area (in Sqr Feet)</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="propertyView.BuiltArea" name="BuiltArea">
               </div>
 
               <div class="form-group col-12">

@@ -38,7 +38,10 @@ export class AddPropertyComponent implements OnInit {
   }
 
   onSubmit(Form:NgForm){
-    console.log(Form.value);
+    console.log('Congrats form submitted');
+    console.log('SellRent='+Form.value.BasicInfo.SellRent)
+    console.log(Form);
+
   }
 
   selectTab(tabId: number) {

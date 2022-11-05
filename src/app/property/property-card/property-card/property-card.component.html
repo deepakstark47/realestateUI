@@ -13,11 +13,20 @@
         </ul>
       </div>
 
-      <div class="card-box p-1">
-        <h1>{{Property.Name}}</h1>
-        <h1>{{Property.PType}}</h1>
-        <h2>{{Property.Price}}</h2>
+      <div class="card-body p-1">
+        <h1 class="mb-0"> {{Property.BHK}} BHK {{Property.PType}} </h1>
 
+        in {{Property.Name}}
+        <span *ngIf="Property.Name">,</span>
+        {{Property.City}}
+
+        <h6  class="mt-2">{{Property.FType}}
+        <span *ngIf="Property.FType !== 'Unfurnished'">Furnished</span> | Ready to Move</h6>
+
+        <hr class="mt-0 mb-2">
+
+        <h6 class="mb-0">Price: <span class="font-highlight">{{Property.Price}} USD.</span> |
+          Area:  <span class="font-highlight">{{Property.BuiltArea}} Sq Ft </span> </h6>
       </div>
 
     </div>
